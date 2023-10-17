@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import Movies from './Components/movies'
+import Heading from './Components/heading'
+import SearchBox from './Components/searchbox'
+import './App.css'
+import AddFavourites from './Components/AddFavourites'
+import RemoveFavourites from './Components/RemoveFavourites'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+function App () {
+  const [movies, setMovies] = useState([]);
+  const [search, setSearch] = useState('');
+
+
+const getMovieRequest = async(search) => {
+  const url = `http://www.omdbapi.com/?i=tt3896198&apikey=a0e00ef9&s=${search}`;
+  const response = await fetch(url);
+  const data = await response.json();
+
+  if (data.Search){
+    setMovies(data.Search);
+  }
+ 
 }
 
+useEffect(() =>{
+  getMovieRequest(search);
+}, [search]);
+
+
+
+  return (
+    <div className='app'>
+     <div className='header'>
+      <Heading  heading='Movies'/>
+      <SearchBox  
+       search={search}
+       setSearch={setSearch}/>
+
+     </div>
+     <Movies movies={movies}
+      className='movies'/>
+     
+
+
+
+    </div>
+
+
+
+  )
+}
 export default App;
