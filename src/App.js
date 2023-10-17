@@ -3,8 +3,6 @@ import Movies from './Components/movies'
 import Heading from './Components/heading'
 import SearchBox from './Components/searchbox'
 import './App.css'
-import AddFavourites from './Components/AddFavourites'
-import RemoveFavourites from './Components/RemoveFavourites'
 
 
 
@@ -13,13 +11,13 @@ function App () {
   const [search, setSearch] = useState('');
 
 
-const getMovieRequest = async(search) => {
-  const url = `http://www.omdbapi.com/?i=tt3896198&apikey=a0e00ef9&s=${search}`;
+const getMovieRequest = async(searchQuery) => {
+  const url = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&api_key=8daab53e806e1a389e43ee17bc9cdff8`;
   const response = await fetch(url);
   const data = await response.json();
 
-  if (data.Search){
-    setMovies(data.Search);
+  if (data.results){
+    setMovies(data.results);
   }
  
 }
