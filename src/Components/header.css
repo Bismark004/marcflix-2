@@ -6,15 +6,17 @@
     background-image: url(../Images/Poster.png);
     background-size: cover;
     background-position: center;
+    
 }
 
 .display{
     position: absolute;
     top: 15%;
     right: 20%;
-    border: 2px solid bl
+    border: 2px solid blue;
     height: 500px;
     width: 500px;
+    background-color: black;
     
 }
 
@@ -89,6 +91,7 @@ nav {
     height: 36px;
     background-color: transparent;
     border-radius: 6px;
+    color: blanchedalmond;
 }
 
 

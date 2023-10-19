@@ -60,7 +60,8 @@ function Header() {
     function displayImage() {
         if (search === '') {
           return null; // Display nothing
-        } else if (movies.length > 0 && currentMovieIndex >= 0 && currentMovieIndex < movies.length) {
+        } else if (movies.length > 0 && currentMovieIndex >= 0 &&
+           currentMovieIndex < movies.length) {
           return (
             <div className='display'>
               <img
@@ -74,6 +75,86 @@ function Header() {
           return null; // Display nothing
         }
       }
+
+      function displayTitle() {
+        if (search === '') {
+          return <p>John Wick 3: Parabellum</p>
+        }
+        else if(movies.length > 0 && currentMovieIndex >= 0 && 
+          currentMovieIndex < movies.length){
+            return (
+              <p>
+                {movies[currentMovieIndex].title}
+              </p>
+            )
+
+        }
+      }
+
+
+      function displaySynopsis() {
+         if (search === '') {
+          return (
+            <div className='synopsis'>
+            <p>
+              John Wick is on the run after killing a member
+               of the international assassins' guild,
+               and with a $14 million price tag on his head,
+                he is the target of hit men and women everywhere.
+            </p>
+            </div>
+          )
+         } 
+         else if (movies.length > 0 && currentMovieIndex >= 0 &&
+         currentMovieIndex < movies.length) {
+          return (
+            <div className='synopsis'>
+              <p>
+                {movies[currentMovieIndex].overview}
+              </p>
+            </div>
+          )
+
+         }
+      }
+   
+
+      function displayImdb() {
+        if (search === '' || movies.length === 0) {
+          return (
+            <div className='rating'>
+              <div className='imdb'>
+                <img src={Imdb} alt='imdb' />
+                <span>7.988</span>
+              </div>
+              <div className='rotten-tomatoes'>
+                <img src={Tomatoes} alt='rotten tomatoes' />
+                <span>18367</span>
+              </div>
+            </div>
+          );
+        } else if (currentMovieIndex >= 0 && currentMovieIndex < movies.length) {
+          const movie = movies[currentMovieIndex];
+          if (movie.vote_average && movie.vote_count) {
+            return (
+              <div className='rating'>
+                <div className='imdb'>
+                  <img src={Imdb} alt='imdb' />
+                  <span>{movie.vote_average}</span>
+                </div>
+                <div className='rotten-tomatoes'>
+                  <img src={Tomatoes} alt='rotten tomatoes' />
+                  <span>{movie.vote_count}</span>
+                </div>
+              </div>
+            );
+          }
+        }
+        return null; 
+      }
+      
+
+     
       
       
 
@@ -91,7 +172,7 @@ function Header() {
             </a>
         )}
          
-        {search !==  '' && movies.length < movies.length - 1 && (
+        {search !==  '' && currentMovieIndex < movies.length - 1 && (
           <a className='next'  onClick={handleNextClick}>
             <img src={Next} alt='next' />
            </a>
@@ -112,26 +193,17 @@ function Header() {
             <img src={Button} alt='search icon' className='search-icon' />
           </div>
         </nav>
+
         <section>
           <div className='description-box'>
             <div className='parabellum'>
-              <p>John Wick 3: Parabellum</p>
+              {displayTitle()}
             </div>
-            <div className='rating'>
-              <div className='imdb'>
-                <img src={Imdb} alt='imdb' />
-                <span>86.0/100</span>
-              </div>
-              <div className='rotten-tomatoes'>
-                <img src={Tomatoes} alt='rotten tomatoes' />
-                <span>97%</span>
-              </div>
-            </div>
-            <div className='synopsis'>
-              <p>
-                John Wick is on the run after killing a member of the international assassins' guild, and with a $14 million price tag on his head, he is the target of hit men and women everywhere.
-              </p>
-            </div>
+
+            {displayImdb()}
+          
+              {displaySynopsis()}
+            
             <div className='trailer-btn-container'>
               <button className='trailer-btn'>
                 <img src={Trailer} alt='button' />
