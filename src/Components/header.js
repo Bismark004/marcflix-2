@@ -3,11 +3,9 @@ import './header.css'
 
 import Logo from '../Images/Icons/tv.png';
 import Button from '../Images/Icons/Search.png';
-import Menu from '../Images/Icons/Menu.jpg';
 import Tomatoes from '../Images/Icons/tomatoes.png';
 import Imdb from '../Images/Icons/imdb.png';
 import Trailer from '../Images/Icons/Button.png';
-import Display from '../Images/Poster.png';
 import Prev from '../Images/Icons/bxs-chevron-left-circle.png';
 import Next from '../Images/Icons/bxs-chevron-right-circle.png';
 
@@ -167,13 +165,13 @@ function Header() {
         {displayImage()}
 
         {search !== '' && currentMovieIndex > 0 && (
-            <a className='prev' onClick={handlePrevClick}>
+            <a href="#" className='next' onClick={handlePrevClick}>
               <img src={Prev} alt='previous'/>
             </a>
         )}
          
         {search !==  '' && currentMovieIndex < movies.length - 1 && (
-          <a className='next'  onClick={handleNextClick}>
+          <a href="#" className='next'  onClick={handleNextClick}>
             <img src={Next} alt='next' />
            </a>
         )}
