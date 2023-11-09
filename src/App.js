@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Header from './Components/header.js';
 import './App.css';
 
@@ -11,11 +11,6 @@ function App () {
   return (
     <div className='App'>
      <Header/>
-     
-     
-
-
-
     </div>
 
 
