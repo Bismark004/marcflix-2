@@ -165,15 +165,15 @@ function Header() {
         {displayImage()}
 
         {search !== '' && currentMovieIndex > 0 && (
-            <a href="#" className='next' onClick={handlePrevClick}>
+            <span className='next' onClick={handlePrevClick}>
               <img src={Prev} alt='previous'/>
-            </a>
+            </span>
         )}
          
         {search !==  '' && currentMovieIndex < movies.length - 1 && (
-          <a href="#" className='next'  onClick={handleNextClick}>
+          <span className='next'  onClick={handleNextClick}>
             <img src={Next} alt='next' />
-           </a>
+           </span>
         )}
     
 
