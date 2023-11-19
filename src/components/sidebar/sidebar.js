@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import './sidebar.css';
+import '../sidebar/sidebar.css';
 import Logo from '../../Images/Icons/tv.png';
+import Left from '../../Images/Icons/bxs-chevron-left-circle.png';
+import SearchIcon from '../../Images/Icons/Search.png';
 
 function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
@@ -16,17 +18,21 @@ function Sidebar() {
           <div className="logo-icon">
             <img src={Logo} alt='logo' />
           </div>
-          <div className="logo-text">
+          <div className="logo-text text">
             <h1>Marcflix</h1>
           </div>
         </div>
+        <img src={Left} alt='left' className='toggler' onClick={toggleSidebar}/>
+      
       </header>
-      <box-icon
-        type='solid'
-        name='chevron-left-circle'
-        className="chevron-left-circle"
-        onClick={toggleSidebar}
-      ></box-icon>
+
+      <div className="menu-bar">
+        <div className="search-box" >
+          <img src={SearchIcon} alt='search' className='icon'/>
+          <input type='text' placeholder='search...'/>
+        </div>
+      </div>
+     
     </div>
   );
 }
