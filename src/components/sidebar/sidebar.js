@@ -28,7 +28,9 @@ function Sidebar() {
 
       <div className="menu-bar">
         <div className="search-box" >
-          <img src={SearchIcon} alt='search' className='icon'/>
+          <div className="image-container">
+            <img src={SearchIcon} alt='search' className='icon'/>
+          </div>
           <input type='text' placeholder='search...'/>
         </div>
       </div>
