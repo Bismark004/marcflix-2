@@ -33,6 +33,10 @@ function Sidebar() {
           </div>
           <input type='text' placeholder='search...'/>
         </div>
+
+        <li className="movies">
+          
+        </li>
       </div>
      
     </div>
